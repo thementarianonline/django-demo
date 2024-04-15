@@ -1,0 +1,46 @@
+ul {
+    list-style-type: none;
+}
+
+.description {
+    font-style: italic;
+}
+
+li {
+    text-align: center;
+}
+.title {
+    font-size: 24px;
+}
+
+.heading {
+    font-size: 24px;
+    margin: auto;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-evenly;
+    align-content: center;
+}
+
+img {
+    width: 400px;
+    height: 400px;
+}
+
+h3 {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .grid-container {
+        display: grid;
+        grid-template-columns: auto;
+        justify-content: space-evenly;
+    }
+    h3 {
+        text-align: center;
+    }
+}

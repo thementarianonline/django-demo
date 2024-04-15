@@ -1,0 +1,33 @@
+{% extends "main.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block content %}
+
+  <div class="flex-container">
+    <div class="latest-posts">
+      <h2>Latest posts</h2>
+      <ul class="post-ul">
+        {% for post in posts|slice:":5" %}
+          <li class="title"><a href="/posts/{{ post.slug }}">{{ post.title }}</a></li>
+          <li>{{post.datetime | date:'j F Y'}}</li>
+          <br>
+      {% endfor %}
+      </ul>
+      <a href="/posts/">Click here to view more posts</a>
+    </div>
+
+    <div class="latest-issue">
+      {% for issue in monthlyissue %}
+        {%if forloop.first %}
+        <h2 class="monthly-issue">Latest issue: <a href="/monthly_issues/{{ issue.slug }}">{{ issue.title }}</a></h2>
+        <a href="/monthly_issues/{{issue.slug}}"><img src="/media/{{ issue.thumbnail }}" alt=""></a>
+        {% else %}
+        {%endif%}
+      {% endfor %}
+    </div>
+  </div>
+
+{% endblock %}

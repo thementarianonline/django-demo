@@ -1,0 +1,26 @@
+{% extends 'main.html'%}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'monthly_issue.css' %}">
+
+{%block title%}{{myissue.title}}{%endblock%}
+{%block content%}
+
+<div class="wrapper">
+
+    <header class="header">
+        <h1>{{myissue.title}}</h1>
+    </header>
+    
+    <div class="pages-container">
+    {% for img in pages %}
+        <img src="{{ img.page.url }}" alt="">
+    {% endfor %}
+    </div>
+   
+
+</div>
+
+{%endblock%}
+
+  

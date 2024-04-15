@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{%block title%}Posts{%endblock%}
+
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'posts.css' %}">
+
+{%block content%}
+
+<h1>Posts</h1>
+
+  <article>
+    <ul class="post-ul">
+        {% for post in myposts %}
+          <li class="title"><a href="{{post.slug}}">{{ post.title }}</a></li>
+          <li>{{ post.categories | upper }} | {{ post.datetime | date:'j F Y'}}</li>
+          <p style="font-style:italic">{{post.description|default_if_none:""}}</p>
+        {% endfor %}
+    </ul>
+  </article>
+
+{%endblock%}
+
+</body>
+
+{%include 'footer.html'%}

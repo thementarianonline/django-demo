@@ -1,0 +1,27 @@
+{% extends "main.html" %}
+
+{% load static %}
+
+{%block title%}Monthly Issues{%endblock%}
+{%block content%}
+<link rel="stylesheet" href="{% static 'monthly_issues.css' %}">
+
+  <h1>Monthly Issues</h1>
+    {% regroup monthlyissue by date|date:"Y" as issue_year %}
+    {% for date in issue_year %}
+      <h2>{{date.grouper}}</h2>
+      
+      <div class="grid-container">
+      {% for issue in date.list %}
+        <div class="grid-items">
+          <a href="{{issue.slug}}"><img src="/media/{{issue.thumbnail}}"></a>
+          <h3 class="title"><a href="{{issue.slug}}">{{ issue.title }}</a></h3>
+        </div>
+      {%endfor%}
+      </div>
+
+    {%endfor%}
+  </div>
+
+
+{%endblock content%}

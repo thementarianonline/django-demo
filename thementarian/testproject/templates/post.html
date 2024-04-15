@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+
+{% block title %}
+{{mypost.title}} | The Mentarian
+{% endblock %}
+
+{%load static%}
+<link rel="stylesheet" href="{% static 'post.css' %}">
+
+{% block content %}
+
+<div class="wrapper">
+
+    <div class="header">
+        <h1>{{mypost.title}}</h1>
+        <p>Written by {{ mypost.author}} | {{mypost.datetime}}</p>
+    </div>
+
+    <div class="content">
+        {{mypost.content | safe}}
+    </div>
+
+</div>
+  
+{% endblock %}
