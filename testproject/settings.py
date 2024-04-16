@@ -120,7 +120,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_ROOT = BASE_DIR / 'productionfiles'
+STATIC_ROOT = os.path.join(BASE_DIR, 'productionfiles')
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'assets'
@@ -130,7 +130,7 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media")
-MEDIA_URL = '/media/'
+MEDIA_URL = '/media'
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 
