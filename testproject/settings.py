@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-ov#*psquhuy#f=84-asl)i$gkaf)c=bj*-)57(qaz!fny*z02q
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["https://magnetic.thementarian.org/"]
 
 
 # Application definition
