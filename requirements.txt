@@ -11,6 +11,7 @@ gunicorn==21.2.0
 idna==3.4
 Naked==0.1.32
 packaging==24.0
+pillow==10.3.0
 pycparser==2.21
 pycryptodome==3.19.0
 pycryptodomex==3.17
