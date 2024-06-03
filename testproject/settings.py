@@ -65,7 +65,7 @@ ROOT_URLCONF = 'testproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'mysite/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -144,7 +144,6 @@ USE_TZ = True
 AWS_ACCESS_KEY_ID = 'key_id'
 AWS_SECRET_ACCESS_KEY = 'access_key'
 AWS_STORAGE_BUCKET_NAME = 'bucket_name'
-AWS_DEFAULT_ACL = 'public-read' 
 AWS_S3_ENDPOINT_URL = 'https://thementarian.sgp1.digitaloceanspaces.com' # Make sure nyc3 is correct
 AWS_S3_OBJECT_PARAMETERS = {
     'CacheControl': 'max-age=86400'
