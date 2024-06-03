@@ -29,7 +29,9 @@ IS_HEROKU_APP = "DYNO" in os.environ and not "CI" in os.environ
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv('DEBUG', True) == 'True'
 
-ALLOWED_HOSTS = ["*"]
+# ALLOWED_HOSTS = ["*"]
+
+ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS', '127.0.0.1', 'localhost').split(',')
 
 # Application definition
 
@@ -44,7 +46,6 @@ INSTALLED_APPS = [
     'posts',
     'monthlyissues',
     'django_summernote',
-    'storages'
 ]
 
 MIDDLEWARE = [
@@ -63,7 +64,7 @@ ROOT_URLCONF = 'testproject.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'mysite/templates')],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -139,18 +140,6 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-AWS_ACCESS_KEY_ID = 'key_id'
-AWS_SECRET_ACCESS_KEY = 'access_key'
-AWS_STORAGE_BUCKET_NAME = 'bucket_name'
-AWS_S3_ENDPOINT_URL = 'https://thementarian.sgp1.digitaloceanspaces.com' # Make sure nyc3 is correct
-AWS_S3_OBJECT_PARAMETERS = {
-    'CacheControl': 'max-age=86400'
-}
-
-AWS_STATIC_LOCATION = 'static'
-STATIC_URL = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STATIC_LOCATION)
-# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage' // heroku, what the fuck?
-
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
@@ -168,12 +157,6 @@ STORAGES = {
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
-AWS_MEDIA_LOCATION = 'media'
-PUBLIC_MEDIA_LOCATION = 'media'
-MEDIA_URL = '%s%s' % (AWS_S3_ENDPOINT_URL, AWS_MEDIA_LOCATION)
-# DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
-
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
