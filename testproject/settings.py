@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'posts',
     'monthlyissues',
     'django_summernote',
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -140,6 +141,19 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+AWS_ACCESS_KEY_ID = 'key_id'
+AWS_SECRET_ACCESS_KEY = 'access_key'
+AWS_STORAGE_BUCKET_NAME = 'bucket_name'
+AWS_DEFAULT_ACL = 'public-read' 
+AWS_S3_ENDPOINT_URL = 'https://thementarian.sgp1.digitaloceanspaces.com' # Make sure nyc3 is correct
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400'
+}
+
+AWS_STATIC_LOCATION = 'static'
+STATIC_URL = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STATIC_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
@@ -157,6 +171,12 @@ STORAGES = {
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
+
+AWS_MEDIA_LOCATION = 'media'
+PUBLIC_MEDIA_LOCATION = 'media'
+MEDIA_URL = '%s%s' % (AWS_S3_ENDPOINT_URL, AWS_MEDIA_LOCATION)
+DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
+
 
 MEDIA_ROOT = BASE_DIR / 'media'
 MEDIA_URL = '/media/'
