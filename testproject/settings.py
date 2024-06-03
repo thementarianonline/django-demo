@@ -175,7 +175,7 @@ STORAGES = {
 AWS_MEDIA_LOCATION = 'media'
 PUBLIC_MEDIA_LOCATION = 'media'
 MEDIA_URL = '%s%s' % (AWS_S3_ENDPOINT_URL, AWS_MEDIA_LOCATION)
-DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
+# DEFAULT_FILE_STORAGE = 'django_project.storage_backends.MediaStorage'
 
 
 MEDIA_ROOT = BASE_DIR / 'media'
