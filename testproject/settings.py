@@ -152,7 +152,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 
 AWS_STATIC_LOCATION = 'static'
 STATIC_URL = '%s/%s' % (AWS_S3_ENDPOINT_URL, AWS_STATIC_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage' // heroku, what the fuck?
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATIC_URL = 'static/'
